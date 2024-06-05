@@ -10,6 +10,7 @@ const initialsState = {
 //Action creator - Action
 const increment = createAction("INCREMENT");
 console.log(increment);
+// console.log(increment(20));
 
 //Reducer
 //Store
