@@ -9,6 +9,10 @@ const initialsState = {
 
 //Action creator - Action
 const increment = createAction("INCREMENT");
+const decrement = createAction("DECREMENT");
+const resetCounter = createAction("RESET");
+const incrementBy = createAction("INCREMENT_BY");
+
 console.log(increment);
 // console.log(increment(20));
 
