@@ -71,3 +71,12 @@ const mapslice = createReducer(initialsState, {
 });
 
 //Store
+const store = configureStore({
+  reducer: counterSlice,
+});
+
+//dispatch action
+store.dispatch(increment());
+
+// Get State
+console.log(store.getState());
