@@ -25,4 +25,31 @@ const incrementBy = createAction("INCREMENT_BY", (amount, user) => {
 console.log(incrementBy(20, "Emma"));
 
 //Reducer
+//Create Reducer
+//1. Builder callback notation
+//2. map object notation
+
+// Builder callback notation
+const counterSlice = createReducer(initialsState, (builder) => {
+  //increment
+  builder.addCase(increment, (state) => {
+    state.counter += 1;
+  });
+
+  //decrement
+  builder.addCase(decrement, (state) => {
+    state.counter -= 1;
+  });
+
+  //reset
+  builder.addCase(resetCounter, (state) => {
+    state.counter = 0;
+  });
+
+  //increment By
+  builder.addCase(incrementBy, (state, action) => {
+    state.counter += action.payload.amount;
+  });
+});
+
 //Store
