@@ -52,4 +52,22 @@ const counterSlice = createReducer(initialsState, (builder) => {
   });
 });
 
+const mapslice = createReducer(initialsState, {
+  [increment]: (state) => {
+    state.counter += 1;
+  },
+  //decrement
+  [decrement]: (state) => {
+    state.counter -= 1;
+  },
+  //reset
+  [resetCounter]: (state) => {
+    state.counter = 0;
+  },
+  //increment by
+  [incrementBy]: (state, action) => {
+    state.counter += action.payload.amount;
+  },
+});
+
 //Store
