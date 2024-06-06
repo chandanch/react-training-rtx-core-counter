@@ -34,7 +34,7 @@ const initialState = {
 const fetchPosts = createAsyncThunk("posts/fetch", async (arg, thunkapi) => {
   try {
     const response = await axios.get(
-      "https://jsonplaceholder.typicode.com/posts"
+      "https://jsonplaceholder.typicode.com/posts/1"
     );
     return response.data;
   } catch (error) {
@@ -76,13 +76,10 @@ const store = configureStore({
   reducer: postsReducer,
 });
 
-// dispatch the action
-store.dispatch(fetchPosts());
-
-// handling thunk results
-store.dispatch(fetchPosts());
-
 // subscribe to store changes
 store.subscribe(() => {
   console.log(store.getState());
 });
+
+// dispatch the action
+store.dispatch(fetchPosts());
