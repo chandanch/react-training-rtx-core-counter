@@ -1,4 +1,9 @@
-const { createAction } = require("@reduxjs/toolkit");
+const {
+  createAction,
+  createReducer,
+  nanoid,
+  configureStore,
+} = require("@reduxjs/toolkit");
 
 console.log("RTK Grounds");
 
@@ -17,7 +22,7 @@ const incrementBy = createAction("INCREMENT_BY", (amount, user) => {
     payload: {
       amount,
       user,
-      id: Math.round(Math.random() * 999),
+      id: nanoid(),
     },
   };
 });
@@ -52,22 +57,31 @@ const counterSlice = createReducer(initialsState, (builder) => {
   });
 });
 
-const mapslice = createReducer(initialsState, {
-  [increment]: (state) => {
-    state.counter += 1;
-  },
-  //decrement
-  [decrement]: (state) => {
-    state.counter -= 1;
-  },
-  //reset
-  [resetCounter]: (state) => {
-    state.counter = 0;
-  },
-  //increment by
-  [incrementBy]: (state, action) => {
-    state.counter += action.payload.amount;
-  },
-});
+// const mapslice = createReducer(initialsState, {
+//   [increment]: (state) => {
+//     state.counter += 1;
+//   },
+//   //decrement
+//   [decrement]: (state) => {
+//     state.counter -= 1;
+//   },
+//   //reset
+//   [resetCounter]: (state) => {
+//     state.counter = 0;
+//   },
+//   //increment by
+//   [incrementBy]: (state, action) => {
+//     state.counter += action.payload.amount;
+//   },
+// });
 
 //Store
+const store = configureStore({
+  reducer: counterSlice,
+});
+
+//dispatch action
+store.dispatch(increment());
+
+// Get State
+console.log(store.getState());
