@@ -52,6 +52,7 @@ const counterSlice = createReducer(initialsState, (builder) => {
   });
 });
 
+//Map Object Notation
 const mapslice = createReducer(initialsState, {
   [increment]: (state) => {
     state.counter += 1;
