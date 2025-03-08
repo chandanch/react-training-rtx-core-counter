@@ -56,7 +56,7 @@ const postSlice = createSlice({
     });
 
     builder.addCase(fetchPosts.fulfilled, (state, action) => {
-      state.posts = action.payload;
+      state.posts.push(action.payload);
       state.loading = false;
     });
 
